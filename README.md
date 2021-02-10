@@ -5,7 +5,7 @@
 - [Technologies](#technologies)
 - [How to Run the project](#how-to-run-the-project)
     - [Getting Started](#getting-started)
-    - [Running the Application](#running-the-application)
+    - [Running the Application Locally](#running-the-application-locally)
 - [How to use the API](#how-to-use-the-api)
     - [Available Routes](#available-routes)
     - [Postman Requests](#postman-requests)
@@ -52,7 +52,7 @@ $ git clone https://github.com/priscilasanfer/concrete-challenge.git
 ```
 In your JAVA IDE, import the application as a maven project. As reference, this project was developed using **[IntelliJ IDEA](https://www.jetbrains.com/idea/)**.
 
-### Running the Application
+### Running the Application Locally
 
 There are two different ways to run the application:
 
@@ -65,14 +65,23 @@ mvn spring-boot:run -Dspring.profiles.active=test
 
 By default, the API will be available at http://localhost:8080/users
 
+## How to use the API
+
+The API is hosted in the url: https://priscilasanfer.herokuapp.com/
+
+First you need to create a user sending a POST request to endpoint '/users', this request does not require authentication.
+Then if you want to use the API to delete, search or update a user, it will be necessary  to authenticate.
+To authenticate you need to send a POST request to endpoint '/auth' then use the returned token in the others requests.
+
+
 ## Available Routes
 
-| Routes                 | Description                          | HTTP Methods |
-|------------------------|--------------------------------------|--------------|
-|/users                  | register a new user                  | POST         |
-|/users/{id}             | get a user  by the id                | GET          |
-|/auth                   | list all the users                   | POST         |
-|/users/{id}             | delete a user by id                  | DELETE       | 
+| Routes       | Description               | HTTP Methods | Requires Authentication? |
+|--------------|---------------------------|--------------|--------------------------|
+|/users        | register a new user       | POST         | NO                       |
+|/users/{id}   | get a user  by the id     | GET          | YES                      |
+|/auth         | list all the users        | POST         | NO                       |
+|/users/{id}   | delete a user by id       | DELETE       | YES                      |
 
 ## Postman Requests
 
@@ -142,13 +151,14 @@ curl --location --request DELETE 'http://localhost:8080/users/1' \
 ```
 
 ### TODO
-- I faced a problem with gradle to identify the tests class, so I decided to change to Maven due the time to finish the project 
-- For some reason I couldn't fix the relationship between the User and Phones entities, and because of that I couldn't associate the phone to its user.
-I also tried to associate both before saving it but was useless.
-- I need to learn how to test void methods in order to test the deleteById feature
-- Fix test shouldReturnUserWithValidId to return the correct HTTP status
-- Fix test shouldCreateUser to save the user correctly
-- Add more tests in oder to have 100% of coverage
-- Generate token when creating a new user
-- Return decrypted password in the response. 
+- I had a problem identifying the test classes using the gradle, so I decided to switch to Maven due to the project's lead time.
+- For some reason, I was not able to make the relationship between User and Phone entities work properly. 
+  The two entities are saved in the database but are not linked.
+  I tried to assign the User to the Phone entity before saving them to the bank, but it also didn't work.
+- I still need to learn how to test void methods.
+- Fix 'shouldReturnUserWithValidId' test to return the correct HTTP status.
+- Fix 'shouldCreateUser' test to save the user correctly
+- Add more tests in oder to have 100% of coverage.
+- Generate token when creating a new user.
+- Return decrypted password in the response body. 
 
