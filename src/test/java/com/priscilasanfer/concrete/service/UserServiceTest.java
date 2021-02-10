@@ -5,7 +5,7 @@ import com.priscilasanfer.concrete.dto.response.UserResponse;
 import com.priscilasanfer.concrete.exception.EmailAlreadyExistsException;
 import com.priscilasanfer.concrete.exception.NoSuchElementFoundException;
 import com.priscilasanfer.concrete.mapper.UserMapper;
-import com.priscilasanfer.concrete.model.Phones;
+import com.priscilasanfer.concrete.model.Phone;
 import com.priscilasanfer.concrete.model.User;
 import com.priscilasanfer.concrete.repository.UserRepository;
 import org.junit.Before;
@@ -46,7 +46,7 @@ public class UserServiceTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phones.builder()
+                .phones(Collections.singletonList(Phone.builder()
                         .id(1L)
                         .number("987654321")
                         .ddd("21")
@@ -58,7 +58,7 @@ public class UserServiceTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phones.builder()
+                .phones(Collections.singletonList(Phone.builder()
                         .id(1L)
                         .number("987654321")
                         .ddd("21")

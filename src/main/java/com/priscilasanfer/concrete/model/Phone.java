@@ -11,7 +11,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Phones {
+@Table(name = "tb_phone")
+public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

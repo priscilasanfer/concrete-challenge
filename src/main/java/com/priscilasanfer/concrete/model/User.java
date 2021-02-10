@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "tb_user")
 public class User implements UserDetails {
 
     @Id
@@ -27,7 +28,7 @@ public class User implements UserDetails {
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Phones> phones = new ArrayList<>();
+    private List<Phone> phones = new ArrayList<>();
 
     private Instant created;
     private Instant modified;

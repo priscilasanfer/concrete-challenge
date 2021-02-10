@@ -1,6 +1,6 @@
 package com.priscilasanfer.concrete.dto.request;
 
-import com.priscilasanfer.concrete.model.Phones;
+import com.priscilasanfer.concrete.model.Phone;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -17,5 +17,5 @@ public class UserRequest {
     private String name;
     private String email;
     private String password;
-    private List<Phones> phones = new ArrayList<>();
+    private List<Phone> phones = new ArrayList<>();
 }

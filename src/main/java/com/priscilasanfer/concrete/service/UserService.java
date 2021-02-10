@@ -6,7 +6,6 @@ import com.priscilasanfer.concrete.dto.response.UserResponse;
 import com.priscilasanfer.concrete.exception.EmailAlreadyExistsException;
 import com.priscilasanfer.concrete.exception.NoSuchElementFoundException;
 import com.priscilasanfer.concrete.mapper.UserMapper;
-import com.priscilasanfer.concrete.model.Phones;
 import com.priscilasanfer.concrete.model.User;
 import com.priscilasanfer.concrete.repository.UserRepository;
 import lombok.AllArgsConstructor;

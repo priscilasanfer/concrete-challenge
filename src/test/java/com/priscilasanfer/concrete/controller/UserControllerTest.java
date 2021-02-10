@@ -5,7 +5,7 @@ import com.priscilasanfer.concrete.dto.request.UserRequest;
 import com.priscilasanfer.concrete.dto.response.UserResponse;
 import com.priscilasanfer.concrete.exception.ErrorHandler;
 import com.priscilasanfer.concrete.exception.NoSuchElementFoundException;
-import com.priscilasanfer.concrete.model.Phones;
+import com.priscilasanfer.concrete.model.Phone;
 import com.priscilasanfer.concrete.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.Instant;
@@ -49,7 +48,7 @@ public class UserControllerTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phones.builder()
+                .phones(Collections.singletonList(Phone.builder()
                         .id(1L)
                         .number("987654321")
                         .ddd("21")
@@ -61,7 +60,7 @@ public class UserControllerTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phones.builder()
+                .phones(Collections.singletonList(Phone.builder()
                         .id(1L)
                         .number("987654321")
                         .ddd("21")

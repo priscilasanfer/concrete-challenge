@@ -2,7 +2,7 @@ package com.priscilasanfer.concrete.mapper;
 
 import com.priscilasanfer.concrete.dto.request.UserRequest;
 import com.priscilasanfer.concrete.dto.response.UserResponse;
-import com.priscilasanfer.concrete.model.Phones;
+import com.priscilasanfer.concrete.model.Phone;
 import com.priscilasanfer.concrete.model.User;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class UserMapperTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phones.builder()
+                .phones(Collections.singletonList(Phone.builder()
                         .id(1L)
                         .number("987654321")
                         .ddd("21")
@@ -45,7 +45,7 @@ public class UserMapperTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phones.builder()
+                .phones(Collections.singletonList(Phone.builder()
                         .id(1L)
                         .number("987654321")
                         .ddd("21")
