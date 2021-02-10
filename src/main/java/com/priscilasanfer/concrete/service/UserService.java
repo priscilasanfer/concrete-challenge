@@ -6,10 +6,12 @@ import com.priscilasanfer.concrete.dto.response.UserResponse;
 import com.priscilasanfer.concrete.exception.EmailAlreadyExistsException;
 import com.priscilasanfer.concrete.exception.NoSuchElementFoundException;
 import com.priscilasanfer.concrete.mapper.UserMapper;
+import com.priscilasanfer.concrete.model.Phones;
 import com.priscilasanfer.concrete.model.User;
 import com.priscilasanfer.concrete.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -40,12 +42,20 @@ public class UserService {
             throw new EmailAlreadyExistsException(userRequest.getEmail());
         }
 
+        String encryptedPassword = encryptPassword(userRequest.getPassword());
+
         User user = UserMapper.INSTANCE.userRequestToUser(userRequest);
         user.setCreated(Instant.now());
         user.setModified(Instant.now());
         user.setLastLogin(Instant.now());
+        user.setPassword(encryptedPassword);
         user = repository.save(user);
+
         return UserMapper.INSTANCE.userToUserResponse(user);
+    }
+
+    private String encryptPassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
     }
 
     private boolean emailAlreadyInUse(String email) {
@@ -55,7 +65,6 @@ public class UserService {
     public void delete(Long id) {
         try {
             repository.deleteById(id);
-
         } catch (EmptyResultDataAccessException e) {
             throw new NoSuchElementFoundException(id);
         }
@@ -63,8 +72,7 @@ public class UserService {
 
     public UserResponse update(Long id, UserUpdateRequest userUpdateRequest) {
         User user = repository.findById(id).orElseThrow(() -> new NoSuchElementFoundException(id));
-        user.setName(userUpdateRequest.getName());
-        user.setEmail(userUpdateRequest.getEmail());
+        user.setPassword(userUpdateRequest.getPassword());
         user.setModified(Instant.now());
         user = repository.save(user);
         return UserMapper.INSTANCE.userToUserResponse(user);

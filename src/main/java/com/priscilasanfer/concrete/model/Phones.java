@@ -4,7 +4,6 @@ package com.priscilasanfer.concrete.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -19,7 +18,7 @@ public class Phones {
     private String number;
     private String ddd;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 }
