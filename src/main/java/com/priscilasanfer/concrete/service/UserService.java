@@ -48,9 +48,19 @@ public class UserService {
         user.setModified(Instant.now());
         user.setLastLogin(Instant.now());
         user.setPassword(encryptedPassword);
+        associatePhonesToUser(userRequest, user);
         user = repository.save(user);
 
         return UserMapper.INSTANCE.userToUserResponse(user);
+    }
+
+    private void associatePhonesToUser(UserRequest userRequest, User user) {
+        int quantity = userRequest.getPhones().size();
+
+        for (int i = 0; i < quantity; i++) {
+            userRequest.getPhones().get(i).setUser(user);
+        }
+
     }
 
     private String encryptPassword(String password) {

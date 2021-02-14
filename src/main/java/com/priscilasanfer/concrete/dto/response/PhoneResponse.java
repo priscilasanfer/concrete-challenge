@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PhonesResponse {
+public class PhoneResponse {
     private String number;
     private String ddd;
 
