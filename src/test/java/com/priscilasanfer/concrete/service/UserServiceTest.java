@@ -42,12 +42,10 @@ public class UserServiceTest {
     @Before
     public void setUp() {
         userRequest = UserRequest.builder()
-                .id(1L)
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
                 .phones(Collections.singletonList(Phone.builder()
-                        .id(1L)
                         .number("987654321")
                         .ddd("21")
                         .build()))

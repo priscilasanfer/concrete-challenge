@@ -152,9 +152,6 @@ curl --location --request DELETE 'http://localhost:8080/users/1' \
 
 ### TODO
 - I had a problem identifying the test classes using the gradle, so I decided to switch to Maven due to the project's lead time.
-- For some reason, I was not able to make the relationship between User and Phone entities work properly. 
-  The two entities are saved in the database but are not linked.
-  I tried to assign the User to the Phone entity before saving them to the bank, but it also didn't work.
 - I still need to learn how to test void methods.
 - Fix 'shouldReturnUserWithValidId' test to return the correct HTTP status.
 - Fix 'shouldCreateUser' test to save the user correctly

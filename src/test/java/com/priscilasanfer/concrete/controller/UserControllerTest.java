@@ -2,6 +2,7 @@ package com.priscilasanfer.concrete.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.priscilasanfer.concrete.dto.request.UserRequest;
+import com.priscilasanfer.concrete.dto.response.PhoneResponse;
 import com.priscilasanfer.concrete.dto.response.UserResponse;
 import com.priscilasanfer.concrete.exception.ErrorHandler;
 import com.priscilasanfer.concrete.exception.NoSuchElementFoundException;
@@ -60,8 +61,7 @@ public class UserControllerTest {
                 .name("João da Silva")
                 .email("joao@silva.org")
                 .password("hunter2")
-                .phones(Collections.singletonList(Phone.builder()
-                        .id(1L)
+                .phones(Collections.singletonList(PhoneResponse.builder()
                         .number("987654321")
                         .ddd("21")
                         .build()))
